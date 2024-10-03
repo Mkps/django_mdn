@@ -1,1 +1,6 @@
+# Excluding the virtual env for pip
 django_venv/
+# Excluding the backup files
+*.bak
+# Excluding the database
+*.sqlite
