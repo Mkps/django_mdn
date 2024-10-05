@@ -47,7 +47,7 @@ class Language(models.Model):
 
     def __str__(self):
         """String for representing the Model Object."""
-        return self.language
+        return self.name
 
     def get_absolute_url(self):
         """Returns the url to access a particular language instance"""
@@ -83,6 +83,12 @@ class Book(models.Model):
         Genre, help_text="Select a genre for this book")
     language = models.ForeignKey(
             'Language', on_delete=models.SET_NULL, null=True)
+
+    def display_genre(self):
+        """Returns the genre(s) as a string"""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+    display_genre.short_description = 'Genre'
 
     def __str__(self):
         """String for representing the Model object."""
